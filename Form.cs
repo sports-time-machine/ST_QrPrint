@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
 using System.Drawing.Printing;
+using System.Windows.Forms;
 
 namespace ST_QrPrint
 {
@@ -57,7 +52,8 @@ namespace ST_QrPrint
             Debug.Print(e.MarginBounds.ToString());
 
 
-			barcode.QRCopyToClipboard("ABCD", 5);
+			const int qr_width = 4;
+			barcode.QRCopyToClipboard("ABCD", qr_width);
 			Image img = Clipboard.GetImage();
 			Debug.Print(img.Width.ToString());
 			Debug.Print(img.Height.ToString());
@@ -69,12 +65,14 @@ namespace ST_QrPrint
 			int text_width = (int)g.MeasureString("ABCD", font).Width;
 
 			// A4: 8.27in x 11.69in
-			const int cel_width  = 827/4;
-			const int cel_height = 1169/6;
+			const int W = 6;
+			const int H = 5;
+			const int cel_width  = 827/W;
+			const int cel_height = 1169/H;
 
-            for (int y=0; y<8; ++y)
+            for (int y=0; y<H; ++y)
             {
-                for (int x=0; x<4; ++x)
+                for (int x=0; x<W; ++x)
                 {
 					int dx = x * cel_width;
 					int dy = y * cel_height;
@@ -85,7 +83,7 @@ namespace ST_QrPrint
                     barcode.QRWriteBar("ABCD",
 						   dx + (cel_width-qr_size)/2,
 						   dy + 10,
-                           5, e.Graphics);
+                           qr_width, e.Graphics);
                     g.DrawString("ABCD", font, Brushes.Black,
                            new PointF(
 							   dx + (cel_width-text_width)/2,

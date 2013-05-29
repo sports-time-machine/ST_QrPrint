@@ -38,6 +38,11 @@ namespace ST_QrPrint
 			this.textBoxPrinterState = new System.Windows.Forms.TextBox();
 			this.textBoxServerState = new System.Windows.Forms.TextBox();
 			this.label1 = new System.Windows.Forms.Label();
+			this.textBox1 = new System.Windows.Forms.TextBox();
+			this.label2 = new System.Windows.Forms.Label();
+			this.comboBox1 = new System.Windows.Forms.ComboBox();
+			this.label3 = new System.Windows.Forms.Label();
+			this.label4 = new System.Windows.Forms.Label();
 			this.SuspendLayout();
 			// 
 			// labelPrinterStatus
@@ -52,7 +57,7 @@ namespace ST_QrPrint
 			// buttonPrint
 			// 
 			this.buttonPrint.Font = new System.Drawing.Font("Meiryo UI", 12F);
-			this.buttonPrint.Location = new System.Drawing.Point(279, 152);
+			this.buttonPrint.Location = new System.Drawing.Point(283, 232);
 			this.buttonPrint.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
 			this.buttonPrint.Name = "buttonPrint";
 			this.buttonPrint.Size = new System.Drawing.Size(120, 77);
@@ -64,7 +69,7 @@ namespace ST_QrPrint
 			// buttonExit
 			// 
 			this.buttonExit.Font = new System.Drawing.Font("Meiryo UI", 12F);
-			this.buttonExit.Location = new System.Drawing.Point(17, 152);
+			this.buttonExit.Location = new System.Drawing.Point(17, 225);
 			this.buttonExit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
 			this.buttonExit.Name = "buttonExit";
 			this.buttonExit.Size = new System.Drawing.Size(114, 77);
@@ -113,12 +118,64 @@ namespace ST_QrPrint
 			this.label1.TabIndex = 6;
 			this.label1.Text = "データサーバーの状態";
 			// 
+			// textBox1
+			// 
+			this.textBox1.Location = new System.Drawing.Point(151, 279);
+			this.textBox1.Name = "textBox1";
+			this.textBox1.Size = new System.Drawing.Size(58, 23);
+			this.textBox1.TabIndex = 7;
+			this.textBox1.Text = "1";
+			this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			// 
+			// label2
+			// 
+			this.label2.AutoSize = true;
+			this.label2.Location = new System.Drawing.Point(215, 282);
+			this.label2.Name = "label2";
+			this.label2.Size = new System.Drawing.Size(62, 15);
+			this.label2.TabIndex = 8;
+			this.label2.Text = "枚印刷する";
+			// 
+			// comboBox1
+			// 
+			this.comboBox1.FormattingEnabled = true;
+			this.comboBox1.Items.AddRange(new object[] {
+            "選手用QRコード",
+            "走るQRコード"});
+			this.comboBox1.Location = new System.Drawing.Point(79, 182);
+			this.comboBox1.Name = "comboBox1";
+			this.comboBox1.Size = new System.Drawing.Size(121, 23);
+			this.comboBox1.TabIndex = 9;
+			// 
+			// label3
+			// 
+			this.label3.AutoSize = true;
+			this.label3.Location = new System.Drawing.Point(14, 185);
+			this.label3.Name = "label3";
+			this.label3.Size = new System.Drawing.Size(59, 15);
+			this.label3.TabIndex = 10;
+			this.label3.Text = "データ種類";
+			// 
+			// label4
+			// 
+			this.label4.AutoSize = true;
+			this.label4.Location = new System.Drawing.Point(24, 148);
+			this.label4.Name = "label4";
+			this.label4.Size = new System.Drawing.Size(379, 15);
+			this.label4.TabIndex = 11;
+			this.label4.Text = "※出力するプリンターはWindowsの「通常使うのプリンター」で設定してください。";
+			// 
 			// FormQr
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.SystemColors.Control;
-			this.ClientSize = new System.Drawing.Size(415, 245);
+			this.ClientSize = new System.Drawing.Size(415, 322);
+			this.Controls.Add(this.label4);
+			this.Controls.Add(this.label3);
+			this.Controls.Add(this.comboBox1);
+			this.Controls.Add(this.label2);
+			this.Controls.Add(this.textBox1);
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.textBoxServerState);
 			this.Controls.Add(this.textBoxPrinterState);
@@ -149,6 +206,11 @@ namespace ST_QrPrint
 		private System.Windows.Forms.TextBox textBoxPrinterState;
 		private System.Windows.Forms.TextBox textBoxServerState;
 		private System.Windows.Forms.Label label1;
+		private System.Windows.Forms.TextBox textBox1;
+		private System.Windows.Forms.Label label2;
+		private System.Windows.Forms.ComboBox comboBox1;
+		private System.Windows.Forms.Label label3;
+		private System.Windows.Forms.Label label4;
     }
 }
 
