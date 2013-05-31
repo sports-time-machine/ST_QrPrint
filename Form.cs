@@ -3,12 +3,16 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Printing;
 using System.Windows.Forms;
+using System.Data.SqlClient;
+using MySql.Data.MySqlClient;
 
 namespace ST_QrPrint
 {
     public partial class FormQr : Form
     {
         private DotNetBarcode barcode = new DotNetBarcode();
+
+		Font font;
 
         public FormQr()
         {
@@ -41,8 +45,6 @@ namespace ST_QrPrint
         private void FormQr_Paint(object sender, PaintEventArgs e)
         {
         }
-
-        Font font;
 
         private void pd_PrintPage(object sender, PrintPageEventArgs e)
         {
@@ -120,6 +122,80 @@ namespace ST_QrPrint
 		{
 			this.BackColor = SystemColors.GradientInactiveCaption;
 			this.Opacity = 0.9f;
+		}
+
+		private void button1_Click(object sender, EventArgs e)
+		{
+			string connection_string = string.Empty;
+			connection_string += "Server = localhost;";
+			connection_string += "User ID = st_user;";
+			connection_string += "Password = eureka;";
+//			connection_string += "Integrated Security = SSPI;";
+			connection_string += "Database = ST;";
+
+			MySqlConnection conn;
+			textBoxSqlStatus.Text = "Connecting...";
+
+			try
+			{
+				conn = new MySqlConnection(connection_string);
+				conn.Open();
+			}
+			catch (MySqlException ex)
+			{
+				textBoxSqlStatus.Text = ex.Message;
+				return;
+			}
+
+#if false			
+			{
+				var command = conn.CreateCommand();
+				command.CommandText = "SELECT * FROM player";
+				var reader = command.ExecuteReader();
+				command.Dispose();
+
+				while (reader.Read())
+				{
+					textBoxSqlStatus.Text =
+							"ID:"+reader["id"].ToString()+" "+
+							"DATE:"+reader["register"].ToString();
+				}
+				command.Connection.Close();
+			}
+#endif
+
+			{
+				var date = DateTime.Now;
+				string user_id = string.Empty;
+				var rand = new Random();
+				user_id += Char.ConvertFromUtf32('A'+(rand.Next()%26));
+		//		user_id += Char.ConvertFromUtf32('A'+(rand.Next()%26));
+		//		user_id += Char.ConvertFromUtf32('A'+(rand.Next()%26));
+		//		user_id += Char.ConvertFromUtf32('A'+(rand.Next()%26));
+
+				string query =
+					"INSERT INTO player "+
+					"(id,register) values "+
+					"('"+user_id+"','"+date.ToString("yyyy-MM-dd HH:mm:ss")+"')";
+				var command =new MySqlCommand(query, conn);
+				try
+				{
+					command.ExecuteNonQuery();
+					textBoxSqlStatus.Text = "OK:"+user_id;
+				}
+				catch (MySqlException ex)
+				{
+					if (ex.ErrorCode==-2147467259)
+					{
+						textBoxSqlStatus.Text = "重複:"+user_id;
+					}
+				}
+			}
+
+
+			conn.Close();
+			conn.Dispose();
+
 		}
     }
 }

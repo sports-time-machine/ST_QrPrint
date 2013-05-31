@@ -43,6 +43,8 @@ namespace ST_QrPrint
 			this.comboBox1 = new System.Windows.Forms.ComboBox();
 			this.label3 = new System.Windows.Forms.Label();
 			this.label4 = new System.Windows.Forms.Label();
+			this.button1 = new System.Windows.Forms.Button();
+			this.textBoxSqlStatus = new System.Windows.Forms.TextBox();
 			this.SuspendLayout();
 			// 
 			// labelPrinterStatus
@@ -165,12 +167,34 @@ namespace ST_QrPrint
 			this.label4.TabIndex = 11;
 			this.label4.Text = "※出力するプリンターはWindowsの「通常使うのプリンター」で設定してください。";
 			// 
+			// button1
+			// 
+			this.button1.Font = new System.Drawing.Font("Meiryo UI", 12F);
+			this.button1.Location = new System.Drawing.Point(392, 366);
+			this.button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+			this.button1.Name = "button1";
+			this.button1.Size = new System.Drawing.Size(114, 77);
+			this.button1.TabIndex = 12;
+			this.button1.Text = "Get";
+			this.button1.UseVisualStyleBackColor = true;
+			this.button1.Click += new System.EventHandler(this.button1_Click);
+			// 
+			// textBoxSqlStatus
+			// 
+			this.textBoxSqlStatus.Location = new System.Drawing.Point(12, 366);
+			this.textBoxSqlStatus.Multiline = true;
+			this.textBoxSqlStatus.Name = "textBoxSqlStatus";
+			this.textBoxSqlStatus.Size = new System.Drawing.Size(364, 123);
+			this.textBoxSqlStatus.TabIndex = 14;
+			// 
 			// FormQr
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.SystemColors.Control;
-			this.ClientSize = new System.Drawing.Size(415, 322);
+			this.ClientSize = new System.Drawing.Size(537, 501);
+			this.Controls.Add(this.textBoxSqlStatus);
+			this.Controls.Add(this.button1);
 			this.Controls.Add(this.label4);
 			this.Controls.Add(this.label3);
 			this.Controls.Add(this.comboBox1);
@@ -184,6 +208,7 @@ namespace ST_QrPrint
 			this.Controls.Add(this.buttonPrint);
 			this.Controls.Add(this.labelPrinterStatus);
 			this.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
 			this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
 			this.MaximizeBox = false;
 			this.Name = "FormQr";
@@ -211,6 +236,8 @@ namespace ST_QrPrint
 		private System.Windows.Forms.ComboBox comboBox1;
 		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.Label label4;
+		private System.Windows.Forms.Button button1;
+		private System.Windows.Forms.TextBox textBoxSqlStatus;
     }
 }
 
