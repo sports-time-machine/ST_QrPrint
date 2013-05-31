@@ -45,6 +45,7 @@ namespace ST_QrPrint
 			this.label4 = new System.Windows.Forms.Label();
 			this.button1 = new System.Windows.Forms.Button();
 			this.textBoxSqlStatus = new System.Windows.Forms.TextBox();
+			this.buttonRemoveUnusedIds = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
 			// labelPrinterStatus
@@ -59,7 +60,7 @@ namespace ST_QrPrint
 			// buttonPrint
 			// 
 			this.buttonPrint.Font = new System.Drawing.Font("Meiryo UI", 12F);
-			this.buttonPrint.Location = new System.Drawing.Point(283, 232);
+			this.buttonPrint.Location = new System.Drawing.Point(283, 220);
 			this.buttonPrint.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
 			this.buttonPrint.Name = "buttonPrint";
 			this.buttonPrint.Size = new System.Drawing.Size(120, 77);
@@ -170,10 +171,10 @@ namespace ST_QrPrint
 			// button1
 			// 
 			this.button1.Font = new System.Drawing.Font("Meiryo UI", 12F);
-			this.button1.Location = new System.Drawing.Point(392, 366);
+			this.button1.Location = new System.Drawing.Point(387, 336);
 			this.button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
 			this.button1.Name = "button1";
-			this.button1.Size = new System.Drawing.Size(114, 77);
+			this.button1.Size = new System.Drawing.Size(114, 82);
 			this.button1.TabIndex = 12;
 			this.button1.Text = "Get";
 			this.button1.UseVisualStyleBackColor = true;
@@ -181,11 +182,23 @@ namespace ST_QrPrint
 			// 
 			// textBoxSqlStatus
 			// 
-			this.textBoxSqlStatus.Location = new System.Drawing.Point(12, 366);
+			this.textBoxSqlStatus.Location = new System.Drawing.Point(17, 336);
 			this.textBoxSqlStatus.Multiline = true;
 			this.textBoxSqlStatus.Name = "textBoxSqlStatus";
-			this.textBoxSqlStatus.Size = new System.Drawing.Size(364, 123);
+			this.textBoxSqlStatus.Size = new System.Drawing.Size(364, 82);
 			this.textBoxSqlStatus.TabIndex = 14;
+			// 
+			// buttonRemoveUnusedIds
+			// 
+			this.buttonRemoveUnusedIds.Font = new System.Drawing.Font("Meiryo UI", 12F);
+			this.buttonRemoveUnusedIds.Location = new System.Drawing.Point(17, 449);
+			this.buttonRemoveUnusedIds.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+			this.buttonRemoveUnusedIds.Name = "buttonRemoveUnusedIds";
+			this.buttonRemoveUnusedIds.Size = new System.Drawing.Size(153, 39);
+			this.buttonRemoveUnusedIds.TabIndex = 15;
+			this.buttonRemoveUnusedIds.Text = "未使用IDの削除";
+			this.buttonRemoveUnusedIds.UseVisualStyleBackColor = true;
+			this.buttonRemoveUnusedIds.Click += new System.EventHandler(this.buttonRemoveUnusedIds_Click);
 			// 
 			// FormQr
 			// 
@@ -193,6 +206,7 @@ namespace ST_QrPrint
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.SystemColors.Control;
 			this.ClientSize = new System.Drawing.Size(537, 501);
+			this.Controls.Add(this.buttonRemoveUnusedIds);
 			this.Controls.Add(this.textBoxSqlStatus);
 			this.Controls.Add(this.button1);
 			this.Controls.Add(this.label4);
@@ -215,6 +229,7 @@ namespace ST_QrPrint
 			this.Text = "スポーツタイムマシン　QRコード発行";
 			this.Activated += new System.EventHandler(this.FormQr_Activated);
 			this.Deactivate += new System.EventHandler(this.FormQr_Deactivate);
+			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormQr_FormClosing);
 			this.Load += new System.EventHandler(this.Form1_Load);
 			this.Paint += new System.Windows.Forms.PaintEventHandler(this.FormQr_Paint);
 			this.ResumeLayout(false);
@@ -238,6 +253,7 @@ namespace ST_QrPrint
 		private System.Windows.Forms.Label label4;
 		private System.Windows.Forms.Button button1;
 		private System.Windows.Forms.TextBox textBoxSqlStatus;
+		private System.Windows.Forms.Button buttonRemoveUnusedIds;
     }
 }
 
