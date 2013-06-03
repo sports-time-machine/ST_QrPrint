@@ -72,6 +72,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -82,6 +83,33 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\system-shutdown-6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dialog-cancel-5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\db.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dialog-ok-2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\printer-laser.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\QR_Print.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\media-playback-start-3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\media-playback-stop-3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\player-time.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

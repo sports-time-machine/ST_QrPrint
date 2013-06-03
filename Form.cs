@@ -2,35 +2,79 @@
 using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Printing;
+using System.IO;
+using System.Reflection;
 using System.Windows.Forms;
-using System.Data.SqlClient;
 using MySql.Data.MySqlClient;
-using System.Collections.Generic;
 
 namespace ST_QrPrint
 {
     public partial class FormQr : Form
     {
-        private DotNetBarcode barcode = new DotNetBarcode();
+		// A4: 210mm x 297mm
+		const float margin_h = 8.5f; //mm
+		const float margin_v = 9.0f; //mm
+		float cel_width  = 48.3f;
+		float cel_height = 25.4f;
+		float font_pt = 24.0f;
+		float id_top_mm = 8.25f;
+		float id_left_mm = 22.5f;
+
+		// http://www.mimosa.gr.jp/oa_label/17_1882.html
+		// LDW44CEX
+		// left 8.5mm
+		// top 9.0mm
+		// 48.3 x 25.4
+
+
+		private DotNetBarcode barcode = new DotNetBarcode();
 
 		Font font;
 
         public FormQr()
         {
             InitializeComponent();
-        }
+			this.SetStyle(ControlStyles.SupportsTransparentBackColor, true);
+			this.BackColor = Color.Transparent;
+		}
 
         private void buttonExit_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
 
+		static void apply(PictureBox obj, PictureBox child, Image img)
+		{
+			child.Parent = obj;
+			child.BackColor = Color.Transparent;
+			child.BackgroundImage = img;
+			
+			// Bottom, Right
+			child.Location = new Point(
+				obj.Size.Width - child.Size.Width,
+				obj.Size.Height - child.Size.Height);
+		}
+
         private void Form1_Load(object sender, EventArgs e)
         {
+			var okay = ST_QrPrint.Properties.Resources.dialog_ok_2;
+
+			apply(
+				pictureDatabase,
+				pictureDatabaseStatus,
+				okay);
+			apply(
+				picturePrinter,
+				picturePrinterStatus,
+				okay);
+
+
+
+
             DotNetBarcode barcode = new DotNetBarcode();
             barcode.Type = DotNetBarcode.Types.QRCode;
 
-            font = new Font("Courier New", 10);
+            font = new Font("Courier New", font_pt, FontStyle.Bold);
 
 			textBoxServerState.Text =
 				"良好";
@@ -54,8 +98,8 @@ namespace ST_QrPrint
             Debug.Print(e.MarginBounds.Bottom.ToString());
             Debug.Print(e.MarginBounds.ToString());
 
-			const int W = 6;
-			const int H = 5;
+			const int W = 4;
+			const int H = 11;
 
 			string[] ids;
 			try
@@ -70,16 +114,14 @@ namespace ST_QrPrint
 
             var g = e.Graphics;
 
-			// A4: 8.27in x 11.69in
-			const int cel_width  = 827/W;
-			const int cel_height = 1169/H;
+			const float to_inch = 1 / 0.254f;
 
 			int i = 0;
             for (int y=0; y<H; ++y)
             {
                 for (int x=0; x<W; ++x, ++i)
                 {
-					const int qr_width = 4;
+					const int qr_width = 3;
 					barcode.QRCopyToClipboard(ids[i], qr_width);
 					Image img = Clipboard.GetImage();
 					Debug.Print(img.Width.ToString());
@@ -87,20 +129,25 @@ namespace ST_QrPrint
 					int qr_size = img.Width;
 					int text_width = (int)g.MeasureString(ids[i], font).Width;
 
-					int dx = x * cel_width;
-					int dy = y * cel_height;
+					float dx = x * cel_width  + margin_h;
+					float dy = y * cel_height + margin_v;
 
                     g.DrawRectangle(
-                        (x^y)%2==0 ? Pens.Red : Pens.Black,
-						new Rectangle(dx+2, dy+2, dx + cel_width-2, dy+cel_height-2));
+                        (x+y)%2==0 ? Pens.Red : Pens.Black,
+						to_inch * dx,
+						to_inch * dy,
+						to_inch * cel_width ,
+						to_inch * cel_height);
+					barcode.QRBackColorTimingPattern = Color.Red;
+					barcode.BackGroundColor = Color.Transparent;
                     barcode.QRWriteBar(ids[i],
-						   dx + (cel_width-qr_size)/2,
-						   dy + 10,
+						   to_inch * (dx + 2),
+						   to_inch * (dy + 2),
                            qr_width, e.Graphics);
 					g.DrawString(ids[i], font, Brushes.Black,
                            new PointF(
-							   dx + (cel_width-text_width)/2,
-							   dy + 160));
+							   to_inch * (dx + id_left_mm),
+							   to_inch * (dy + id_top_mm)));
                 }
             }
             e.HasMorePages = false;
@@ -288,6 +335,11 @@ namespace ST_QrPrint
 				conn_keep_alive.Close();
 				conn_keep_alive.Dispose();
 			}
+		}
+
+		private void buttonExit_Click_1(object sender, EventArgs e)
+		{
+			Application.Exit();
 		}
     }
 }
