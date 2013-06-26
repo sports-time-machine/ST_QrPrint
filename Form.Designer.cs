@@ -54,6 +54,9 @@ namespace ST_QrPrint
 			this.pictureDatabaseStatus = new System.Windows.Forms.PictureBox();
 			this.pictureDatabase = new System.Windows.Forms.PictureBox();
 			this.tabPage4 = new System.Windows.Forms.TabPage();
+			this.buttonPrintGameCode = new System.Windows.Forms.Button();
+			this.label1 = new System.Windows.Forms.Label();
+			this.label3 = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
 			this.tabControl1.SuspendLayout();
 			this.tabPage1.SuspendLayout();
@@ -92,7 +95,7 @@ namespace ST_QrPrint
 			// label2
 			// 
 			this.label2.AutoSize = true;
-			this.label2.Location = new System.Drawing.Point(244, 149);
+			this.label2.Location = new System.Drawing.Point(344, 380);
 			this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.label2.Name = "label2";
 			this.label2.Size = new System.Drawing.Size(83, 20);
@@ -147,7 +150,7 @@ namespace ST_QrPrint
 			// numericUpDown1
 			// 
 			this.numericUpDown1.Font = new System.Drawing.Font("Tahoma", 20F);
-			this.numericUpDown1.Location = new System.Drawing.Point(126, 137);
+			this.numericUpDown1.Location = new System.Drawing.Point(226, 368);
 			this.numericUpDown1.Margin = new System.Windows.Forms.Padding(4);
 			this.numericUpDown1.Maximum = new decimal(new int[] {
             10,
@@ -183,6 +186,9 @@ namespace ST_QrPrint
 			// 
 			// tabPage1
 			// 
+			this.tabPage1.Controls.Add(this.label3);
+			this.tabPage1.Controls.Add(this.label1);
+			this.tabPage1.Controls.Add(this.buttonPrintGameCode);
 			this.tabPage1.Controls.Add(this.buttonExit);
 			this.tabPage1.Controls.Add(this.checkPrintWithoutPreview);
 			this.tabPage1.Controls.Add(this.buttonPrint);
@@ -212,7 +218,7 @@ namespace ST_QrPrint
 			// checkPrintWithoutPreview
 			// 
 			this.checkPrintWithoutPreview.AutoSize = true;
-			this.checkPrintWithoutPreview.Location = new System.Drawing.Point(179, 195);
+			this.checkPrintWithoutPreview.Location = new System.Drawing.Point(494, 383);
 			this.checkPrintWithoutPreview.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.checkPrintWithoutPreview.Name = "checkPrintWithoutPreview";
 			this.checkPrintWithoutPreview.Size = new System.Drawing.Size(160, 24);
@@ -225,7 +231,7 @@ namespace ST_QrPrint
 			this.buttonPrint.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonPrint.BackgroundImage")));
 			this.buttonPrint.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
 			this.buttonPrint.Font = new System.Drawing.Font("Meiryo UI", 12F);
-			this.buttonPrint.Location = new System.Drawing.Point(373, 98);
+			this.buttonPrint.Location = new System.Drawing.Point(123, 108);
 			this.buttonPrint.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.buttonPrint.Name = "buttonPrint";
 			this.buttonPrint.Size = new System.Drawing.Size(152, 149);
@@ -339,6 +345,38 @@ namespace ST_QrPrint
 			this.tabPage4.Text = "デバッグ用";
 			this.tabPage4.UseVisualStyleBackColor = true;
 			// 
+			// buttonPrintGameCode
+			// 
+			this.buttonPrintGameCode.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonPrintGameCode.BackgroundImage")));
+			this.buttonPrintGameCode.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+			this.buttonPrintGameCode.Font = new System.Drawing.Font("Meiryo UI", 12F);
+			this.buttonPrintGameCode.Location = new System.Drawing.Point(416, 108);
+			this.buttonPrintGameCode.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+			this.buttonPrintGameCode.Name = "buttonPrintGameCode";
+			this.buttonPrintGameCode.Size = new System.Drawing.Size(152, 149);
+			this.buttonPrintGameCode.TabIndex = 20;
+			this.buttonPrintGameCode.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+			this.buttonPrintGameCode.UseVisualStyleBackColor = true;
+			this.buttonPrintGameCode.Click += new System.EventHandler(this.buttonPrintGameCode_Click);
+			// 
+			// label1
+			// 
+			this.label1.AutoSize = true;
+			this.label1.Location = new System.Drawing.Point(129, 262);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(142, 20);
+			this.label1.TabIndex = 21;
+			this.label1.Text = "プレイヤーのQRコード";
+			// 
+			// label3
+			// 
+			this.label3.AutoSize = true;
+			this.label3.Location = new System.Drawing.Point(433, 262);
+			this.label3.Name = "label3";
+			this.label3.Size = new System.Drawing.Size(119, 20);
+			this.label3.TabIndex = 22;
+			this.label3.Text = "ゲームのQRコード";
+			// 
 			// FormQr
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
@@ -401,6 +439,9 @@ namespace ST_QrPrint
 		private System.Windows.Forms.GroupBox groupBox2;
 		private System.Windows.Forms.GroupBox groupBox1;
 		private System.Windows.Forms.Button buttonExit;
+		private System.Windows.Forms.Label label3;
+		private System.Windows.Forms.Label label1;
+		private System.Windows.Forms.Button buttonPrintGameCode;
     }
 }
 
