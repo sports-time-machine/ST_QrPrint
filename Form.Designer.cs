@@ -32,96 +32,40 @@ namespace ST_QrPrint
         private void InitializeComponent()
         {
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormQr));
-			this.textBoxPrinterState = new System.Windows.Forms.TextBox();
-			this.textBoxServerState = new System.Windows.Forms.TextBox();
-			this.label2 = new System.Windows.Forms.Label();
-			this.label4 = new System.Windows.Forms.Label();
-			this.button1 = new System.Windows.Forms.Button();
+			this.tabPage4 = new System.Windows.Forms.TabPage();
 			this.textBoxSqlStatus = new System.Windows.Forms.TextBox();
-			this.buttonRemoveUnusedIds = new System.Windows.Forms.Button();
-			this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-			this.tabControl1 = new System.Windows.Forms.TabControl();
+			this.button1 = new System.Windows.Forms.Button();
 			this.tabPage1 = new System.Windows.Forms.TabPage();
+			this.label3 = new System.Windows.Forms.Label();
+			this.label1 = new System.Windows.Forms.Label();
+			this.buttonPrintGameCode = new System.Windows.Forms.Button();
 			this.buttonExit = new System.Windows.Forms.Button();
 			this.checkPrintWithoutPreview = new System.Windows.Forms.CheckBox();
 			this.buttonPrint = new System.Windows.Forms.Button();
-			this.tabPage3 = new System.Windows.Forms.TabPage();
-			this.groupBox2 = new System.Windows.Forms.GroupBox();
-			this.picturePrinterStatus = new System.Windows.Forms.PictureBox();
-			this.textBox1 = new System.Windows.Forms.TextBox();
-			this.picturePrinter = new System.Windows.Forms.PictureBox();
-			this.groupBox1 = new System.Windows.Forms.GroupBox();
-			this.pictureDatabaseStatus = new System.Windows.Forms.PictureBox();
-			this.pictureDatabase = new System.Windows.Forms.PictureBox();
-			this.tabPage4 = new System.Windows.Forms.TabPage();
-			this.buttonPrintGameCode = new System.Windows.Forms.Button();
-			this.label1 = new System.Windows.Forms.Label();
-			this.label3 = new System.Windows.Forms.Label();
+			this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+			this.label2 = new System.Windows.Forms.Label();
+			this.tabControl1 = new System.Windows.Forms.TabControl();
+			this.tabPage2 = new System.Windows.Forms.TabPage();
+			this.label4 = new System.Windows.Forms.Label();
+			this.buttonAnimals = new System.Windows.Forms.Button();
+			this.tabPage4.SuspendLayout();
+			this.tabPage1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
 			this.tabControl1.SuspendLayout();
-			this.tabPage1.SuspendLayout();
-			this.tabPage3.SuspendLayout();
-			this.groupBox2.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.picturePrinterStatus)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.picturePrinter)).BeginInit();
-			this.groupBox1.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pictureDatabaseStatus)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureDatabase)).BeginInit();
-			this.tabPage4.SuspendLayout();
+			this.tabPage2.SuspendLayout();
 			this.SuspendLayout();
 			// 
-			// textBoxPrinterState
+			// tabPage4
 			// 
-			this.textBoxPrinterState.Font = new System.Drawing.Font("Meiryo UI", 10F);
-			this.textBoxPrinterState.Location = new System.Drawing.Point(16, 235);
-			this.textBoxPrinterState.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-			this.textBoxPrinterState.Multiline = true;
-			this.textBoxPrinterState.Name = "textBoxPrinterState";
-			this.textBoxPrinterState.ReadOnly = true;
-			this.textBoxPrinterState.Size = new System.Drawing.Size(280, 100);
-			this.textBoxPrinterState.TabIndex = 4;
-			// 
-			// textBoxServerState
-			// 
-			this.textBoxServerState.Font = new System.Drawing.Font("Meiryo UI", 10F);
-			this.textBoxServerState.Location = new System.Drawing.Point(17, 235);
-			this.textBoxServerState.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-			this.textBoxServerState.Multiline = true;
-			this.textBoxServerState.Name = "textBoxServerState";
-			this.textBoxServerState.ReadOnly = true;
-			this.textBoxServerState.Size = new System.Drawing.Size(280, 100);
-			this.textBoxServerState.TabIndex = 5;
-			// 
-			// label2
-			// 
-			this.label2.AutoSize = true;
-			this.label2.Location = new System.Drawing.Point(344, 380);
-			this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(83, 20);
-			this.label2.TabIndex = 8;
-			this.label2.Text = "枚印刷する";
-			// 
-			// label4
-			// 
-			this.label4.AutoSize = true;
-			this.label4.Location = new System.Drawing.Point(124, 49);
-			this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(0, 20);
-			this.label4.TabIndex = 11;
-			// 
-			// button1
-			// 
-			this.button1.Font = new System.Drawing.Font("Meiryo UI", 12F);
-			this.button1.Location = new System.Drawing.Point(486, 350);
-			this.button1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-			this.button1.Name = "button1";
-			this.button1.Size = new System.Drawing.Size(163, 52);
-			this.button1.TabIndex = 12;
-			this.button1.Text = "ID Get";
-			this.button1.UseVisualStyleBackColor = true;
-			this.button1.Click += new System.EventHandler(this.button1_Click);
+			this.tabPage4.Controls.Add(this.textBoxSqlStatus);
+			this.tabPage4.Controls.Add(this.button1);
+			this.tabPage4.Location = new System.Drawing.Point(4, 29);
+			this.tabPage4.Name = "tabPage4";
+			this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+			this.tabPage4.Size = new System.Drawing.Size(658, 412);
+			this.tabPage4.TabIndex = 3;
+			this.tabPage4.Text = "デバッグ用";
+			this.tabPage4.UseVisualStyleBackColor = true;
 			// 
 			// textBoxSqlStatus
 			// 
@@ -135,54 +79,17 @@ namespace ST_QrPrint
 			this.textBoxSqlStatus.Size = new System.Drawing.Size(640, 336);
 			this.textBoxSqlStatus.TabIndex = 14;
 			// 
-			// buttonRemoveUnusedIds
+			// button1
 			// 
-			this.buttonRemoveUnusedIds.Font = new System.Drawing.Font("Meiryo UI", 12F);
-			this.buttonRemoveUnusedIds.Location = new System.Drawing.Point(9, 352);
-			this.buttonRemoveUnusedIds.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-			this.buttonRemoveUnusedIds.Name = "buttonRemoveUnusedIds";
-			this.buttonRemoveUnusedIds.Size = new System.Drawing.Size(163, 52);
-			this.buttonRemoveUnusedIds.TabIndex = 15;
-			this.buttonRemoveUnusedIds.Text = "未使用IDの削除";
-			this.buttonRemoveUnusedIds.UseVisualStyleBackColor = true;
-			this.buttonRemoveUnusedIds.Click += new System.EventHandler(this.buttonRemoveUnusedIds_Click);
-			// 
-			// numericUpDown1
-			// 
-			this.numericUpDown1.Font = new System.Drawing.Font("Tahoma", 20F);
-			this.numericUpDown1.Location = new System.Drawing.Point(226, 368);
-			this.numericUpDown1.Margin = new System.Windows.Forms.Padding(4);
-			this.numericUpDown1.Maximum = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-			this.numericUpDown1.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-			this.numericUpDown1.Name = "numericUpDown1";
-			this.numericUpDown1.Size = new System.Drawing.Size(110, 40);
-			this.numericUpDown1.TabIndex = 17;
-			this.numericUpDown1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-			this.numericUpDown1.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-			// 
-			// tabControl1
-			// 
-			this.tabControl1.Controls.Add(this.tabPage1);
-			this.tabControl1.Controls.Add(this.tabPage3);
-			this.tabControl1.Controls.Add(this.tabPage4);
-			this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.tabControl1.Location = new System.Drawing.Point(0, 0);
-			this.tabControl1.Name = "tabControl1";
-			this.tabControl1.SelectedIndex = 0;
-			this.tabControl1.Size = new System.Drawing.Size(666, 445);
-			this.tabControl1.TabIndex = 18;
+			this.button1.Font = new System.Drawing.Font("Meiryo UI", 12F);
+			this.button1.Location = new System.Drawing.Point(486, 350);
+			this.button1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+			this.button1.Name = "button1";
+			this.button1.Size = new System.Drawing.Size(163, 52);
+			this.button1.TabIndex = 12;
+			this.button1.Text = "ID Get";
+			this.button1.UseVisualStyleBackColor = true;
+			this.button1.Click += new System.EventHandler(this.button1_Click);
 			// 
 			// tabPage1
 			// 
@@ -202,6 +109,38 @@ namespace ST_QrPrint
 			this.tabPage1.Text = "印刷";
 			this.tabPage1.UseVisualStyleBackColor = true;
 			// 
+			// label3
+			// 
+			this.label3.AutoSize = true;
+			this.label3.Location = new System.Drawing.Point(433, 262);
+			this.label3.Name = "label3";
+			this.label3.Size = new System.Drawing.Size(119, 20);
+			this.label3.TabIndex = 22;
+			this.label3.Text = "ゲームのQRコード";
+			// 
+			// label1
+			// 
+			this.label1.AutoSize = true;
+			this.label1.Location = new System.Drawing.Point(129, 262);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(142, 20);
+			this.label1.TabIndex = 21;
+			this.label1.Text = "プレイヤーのQRコード";
+			// 
+			// buttonPrintGameCode
+			// 
+			this.buttonPrintGameCode.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonPrintGameCode.BackgroundImage")));
+			this.buttonPrintGameCode.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+			this.buttonPrintGameCode.Font = new System.Drawing.Font("Meiryo UI", 12F);
+			this.buttonPrintGameCode.Location = new System.Drawing.Point(416, 108);
+			this.buttonPrintGameCode.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+			this.buttonPrintGameCode.Name = "buttonPrintGameCode";
+			this.buttonPrintGameCode.Size = new System.Drawing.Size(152, 149);
+			this.buttonPrintGameCode.TabIndex = 20;
+			this.buttonPrintGameCode.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+			this.buttonPrintGameCode.UseVisualStyleBackColor = true;
+			this.buttonPrintGameCode.Click += new System.EventHandler(this.buttonPrintGameCode_Click);
+			// 
 			// buttonExit
 			// 
 			this.buttonExit.BackgroundImage = global::ST_QrPrint.Properties.Resources.system_shutdown_6;
@@ -213,7 +152,7 @@ namespace ST_QrPrint
 			this.buttonExit.Size = new System.Drawing.Size(80, 80);
 			this.buttonExit.TabIndex = 19;
 			this.buttonExit.UseVisualStyleBackColor = true;
-			this.buttonExit.Click += new System.EventHandler(this.buttonExit_Click_1);
+			this.buttonExit.Click += new System.EventHandler(this.buttonExit_Click);
 			// 
 			// checkPrintWithoutPreview
 			// 
@@ -240,142 +179,89 @@ namespace ST_QrPrint
 			this.buttonPrint.UseVisualStyleBackColor = true;
 			this.buttonPrint.Click += new System.EventHandler(this.buttonPrint_Click);
 			// 
-			// tabPage3
+			// numericUpDown1
 			// 
-			this.tabPage3.Controls.Add(this.groupBox2);
-			this.tabPage3.Controls.Add(this.groupBox1);
-			this.tabPage3.Location = new System.Drawing.Point(4, 29);
-			this.tabPage3.Name = "tabPage3";
-			this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPage3.Size = new System.Drawing.Size(658, 412);
-			this.tabPage3.TabIndex = 2;
-			this.tabPage3.Text = "各種状態";
-			this.tabPage3.UseVisualStyleBackColor = true;
+			this.numericUpDown1.Font = new System.Drawing.Font("Tahoma", 20F);
+			this.numericUpDown1.Location = new System.Drawing.Point(226, 368);
+			this.numericUpDown1.Margin = new System.Windows.Forms.Padding(4);
+			this.numericUpDown1.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+			this.numericUpDown1.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+			this.numericUpDown1.Name = "numericUpDown1";
+			this.numericUpDown1.Size = new System.Drawing.Size(110, 40);
+			this.numericUpDown1.TabIndex = 17;
+			this.numericUpDown1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.numericUpDown1.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+			this.numericUpDown1.Visible = false;
 			// 
-			// groupBox2
+			// label2
 			// 
-			this.groupBox2.Controls.Add(this.picturePrinterStatus);
-			this.groupBox2.Controls.Add(this.textBoxPrinterState);
-			this.groupBox2.Controls.Add(this.textBox1);
-			this.groupBox2.Controls.Add(this.picturePrinter);
-			this.groupBox2.Location = new System.Drawing.Point(335, 6);
-			this.groupBox2.Name = "groupBox2";
-			this.groupBox2.Size = new System.Drawing.Size(315, 398);
-			this.groupBox2.TabIndex = 23;
-			this.groupBox2.TabStop = false;
-			this.groupBox2.Text = "プリンターの状態";
+			this.label2.AutoSize = true;
+			this.label2.Location = new System.Drawing.Point(344, 380);
+			this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+			this.label2.Name = "label2";
+			this.label2.Size = new System.Drawing.Size(83, 20);
+			this.label2.TabIndex = 8;
+			this.label2.Text = "枚印刷する";
+			this.label2.Visible = false;
 			// 
-			// picturePrinterStatus
+			// tabControl1
 			// 
-			this.picturePrinterStatus.BackColor = System.Drawing.Color.DimGray;
-			this.picturePrinterStatus.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-			this.picturePrinterStatus.Location = new System.Drawing.Point(176, 147);
-			this.picturePrinterStatus.Name = "picturePrinterStatus";
-			this.picturePrinterStatus.Size = new System.Drawing.Size(80, 80);
-			this.picturePrinterStatus.TabIndex = 21;
-			this.picturePrinterStatus.TabStop = false;
+			this.tabControl1.Controls.Add(this.tabPage1);
+			this.tabControl1.Controls.Add(this.tabPage2);
+			this.tabControl1.Controls.Add(this.tabPage4);
+			this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.tabControl1.Location = new System.Drawing.Point(0, 0);
+			this.tabControl1.Name = "tabControl1";
+			this.tabControl1.SelectedIndex = 0;
+			this.tabControl1.Size = new System.Drawing.Size(666, 445);
+			this.tabControl1.TabIndex = 18;
 			// 
-			// textBox1
+			// tabPage2
 			// 
-			this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-			this.textBox1.Font = new System.Drawing.Font("Meiryo UI", 9F);
-			this.textBox1.Location = new System.Drawing.Point(16, 343);
-			this.textBox1.Multiline = true;
-			this.textBox1.Name = "textBox1";
-			this.textBox1.ReadOnly = true;
-			this.textBox1.Size = new System.Drawing.Size(280, 41);
-			this.textBox1.TabIndex = 20;
-			this.textBox1.TabStop = false;
-			this.textBox1.Text = "出力するプリンターはWindowsの\r\n「通常使うプリンター」で設定してください。";
-			this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+			this.tabPage2.Controls.Add(this.label4);
+			this.tabPage2.Controls.Add(this.buttonAnimals);
+			this.tabPage2.Location = new System.Drawing.Point(4, 29);
+			this.tabPage2.Name = "tabPage2";
+			this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+			this.tabPage2.Size = new System.Drawing.Size(658, 412);
+			this.tabPage2.TabIndex = 4;
+			this.tabPage2.Text = "特殊なQRコード";
+			this.tabPage2.UseVisualStyleBackColor = true;
 			// 
-			// picturePrinter
+			// label4
 			// 
-			this.picturePrinter.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("picturePrinter.BackgroundImage")));
-			this.picturePrinter.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-			this.picturePrinter.Location = new System.Drawing.Point(56, 27);
-			this.picturePrinter.Name = "picturePrinter";
-			this.picturePrinter.Size = new System.Drawing.Size(200, 200);
-			this.picturePrinter.TabIndex = 19;
-			this.picturePrinter.TabStop = false;
+			this.label4.AutoSize = true;
+			this.label4.Location = new System.Drawing.Point(170, 80);
+			this.label4.Name = "label4";
+			this.label4.Size = new System.Drawing.Size(59, 20);
+			this.label4.TabIndex = 26;
+			this.label4.Text = "チーター";
 			// 
-			// groupBox1
+			// buttonAnimals
 			// 
-			this.groupBox1.Controls.Add(this.textBoxServerState);
-			this.groupBox1.Controls.Add(this.label4);
-			this.groupBox1.Controls.Add(this.pictureDatabaseStatus);
-			this.groupBox1.Controls.Add(this.pictureDatabase);
-			this.groupBox1.Location = new System.Drawing.Point(8, 6);
-			this.groupBox1.Name = "groupBox1";
-			this.groupBox1.Size = new System.Drawing.Size(321, 398);
-			this.groupBox1.TabIndex = 22;
-			this.groupBox1.TabStop = false;
-			this.groupBox1.Text = "データサーバーの状態";
-			// 
-			// pictureDatabaseStatus
-			// 
-			this.pictureDatabaseStatus.BackColor = System.Drawing.Color.DimGray;
-			this.pictureDatabaseStatus.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-			this.pictureDatabaseStatus.Location = new System.Drawing.Point(177, 147);
-			this.pictureDatabaseStatus.Name = "pictureDatabaseStatus";
-			this.pictureDatabaseStatus.Size = new System.Drawing.Size(80, 80);
-			this.pictureDatabaseStatus.TabIndex = 21;
-			this.pictureDatabaseStatus.TabStop = false;
-			// 
-			// pictureDatabase
-			// 
-			this.pictureDatabase.BackgroundImage = global::ST_QrPrint.Properties.Resources.db;
-			this.pictureDatabase.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-			this.pictureDatabase.Location = new System.Drawing.Point(57, 27);
-			this.pictureDatabase.Name = "pictureDatabase";
-			this.pictureDatabase.Size = new System.Drawing.Size(200, 200);
-			this.pictureDatabase.TabIndex = 12;
-			this.pictureDatabase.TabStop = false;
-			// 
-			// tabPage4
-			// 
-			this.tabPage4.Controls.Add(this.textBoxSqlStatus);
-			this.tabPage4.Controls.Add(this.buttonRemoveUnusedIds);
-			this.tabPage4.Controls.Add(this.button1);
-			this.tabPage4.Location = new System.Drawing.Point(4, 29);
-			this.tabPage4.Name = "tabPage4";
-			this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPage4.Size = new System.Drawing.Size(658, 412);
-			this.tabPage4.TabIndex = 3;
-			this.tabPage4.Text = "デバッグ用";
-			this.tabPage4.UseVisualStyleBackColor = true;
-			// 
-			// buttonPrintGameCode
-			// 
-			this.buttonPrintGameCode.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonPrintGameCode.BackgroundImage")));
-			this.buttonPrintGameCode.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-			this.buttonPrintGameCode.Font = new System.Drawing.Font("Meiryo UI", 12F);
-			this.buttonPrintGameCode.Location = new System.Drawing.Point(416, 108);
-			this.buttonPrintGameCode.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-			this.buttonPrintGameCode.Name = "buttonPrintGameCode";
-			this.buttonPrintGameCode.Size = new System.Drawing.Size(152, 149);
-			this.buttonPrintGameCode.TabIndex = 20;
-			this.buttonPrintGameCode.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-			this.buttonPrintGameCode.UseVisualStyleBackColor = true;
-			this.buttonPrintGameCode.Click += new System.EventHandler(this.buttonPrintGameCode_Click);
-			// 
-			// label1
-			// 
-			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(129, 262);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(142, 20);
-			this.label1.TabIndex = 21;
-			this.label1.Text = "プレイヤーのQRコード";
-			// 
-			// label3
-			// 
-			this.label3.AutoSize = true;
-			this.label3.Location = new System.Drawing.Point(433, 262);
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(119, 20);
-			this.label3.TabIndex = 22;
-			this.label3.Text = "ゲームのQRコード";
+			this.buttonAnimals.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonAnimals.BackgroundImage")));
+			this.buttonAnimals.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+			this.buttonAnimals.Font = new System.Drawing.Font("Meiryo UI", 12F);
+			this.buttonAnimals.Location = new System.Drawing.Point(34, 31);
+			this.buttonAnimals.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+			this.buttonAnimals.Name = "buttonAnimals";
+			this.buttonAnimals.Size = new System.Drawing.Size(115, 116);
+			this.buttonAnimals.TabIndex = 25;
+			this.buttonAnimals.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+			this.buttonAnimals.UseVisualStyleBackColor = true;
+			this.buttonAnimals.Click += new System.EventHandler(this.buttonAnimals_Click);
 			// 
 			// FormQr
 			// 
@@ -395,53 +281,37 @@ namespace ST_QrPrint
 			this.Deactivate += new System.EventHandler(this.FormQr_Deactivate);
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormQr_FormClosing);
 			this.Load += new System.EventHandler(this.Form1_Load);
-			this.Paint += new System.Windows.Forms.PaintEventHandler(this.FormQr_Paint);
-			((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-			this.tabControl1.ResumeLayout(false);
-			this.tabPage1.ResumeLayout(false);
-			this.tabPage1.PerformLayout();
-			this.tabPage3.ResumeLayout(false);
-			this.groupBox2.ResumeLayout(false);
-			this.groupBox2.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.picturePrinterStatus)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.picturePrinter)).EndInit();
-			this.groupBox1.ResumeLayout(false);
-			this.groupBox1.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pictureDatabaseStatus)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureDatabase)).EndInit();
 			this.tabPage4.ResumeLayout(false);
 			this.tabPage4.PerformLayout();
+			this.tabPage1.ResumeLayout(false);
+			this.tabPage1.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+			this.tabControl1.ResumeLayout(false);
+			this.tabPage2.ResumeLayout(false);
+			this.tabPage2.PerformLayout();
 			this.ResumeLayout(false);
 
         }
 
         #endregion
 
-		private System.Windows.Forms.Button buttonPrint;
-		private System.Windows.Forms.TextBox textBoxPrinterState;
-		private System.Windows.Forms.TextBox textBoxServerState;
-		private System.Windows.Forms.Label label2;
-		private System.Windows.Forms.Label label4;
-		private System.Windows.Forms.Button button1;
-		private System.Windows.Forms.TextBox textBoxSqlStatus;
-		private System.Windows.Forms.Button buttonRemoveUnusedIds;
-		private System.Windows.Forms.NumericUpDown numericUpDown1;
-		private System.Windows.Forms.TabControl tabControl1;
-		private System.Windows.Forms.TabPage tabPage1;
-		private System.Windows.Forms.TabPage tabPage3;
 		private System.Windows.Forms.TabPage tabPage4;
-		private System.Windows.Forms.PictureBox pictureDatabase;
-		private System.Windows.Forms.CheckBox checkPrintWithoutPreview;
-		private System.Windows.Forms.TextBox textBox1;
-		private System.Windows.Forms.PictureBox picturePrinter;
-		private System.Windows.Forms.PictureBox pictureDatabaseStatus;
-		private System.Windows.Forms.PictureBox picturePrinterStatus;
-		private System.Windows.Forms.GroupBox groupBox2;
-		private System.Windows.Forms.GroupBox groupBox1;
-		private System.Windows.Forms.Button buttonExit;
+		private System.Windows.Forms.TextBox textBoxSqlStatus;
+		private System.Windows.Forms.Button button1;
+		private System.Windows.Forms.TabPage tabPage1;
 		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.Button buttonPrintGameCode;
-    }
+		private System.Windows.Forms.Button buttonExit;
+		private System.Windows.Forms.CheckBox checkPrintWithoutPreview;
+		private System.Windows.Forms.Button buttonPrint;
+		private System.Windows.Forms.NumericUpDown numericUpDown1;
+		private System.Windows.Forms.Label label2;
+		private System.Windows.Forms.TabControl tabControl1;
+		private System.Windows.Forms.TabPage tabPage2;
+		private System.Windows.Forms.Label label4;
+		private System.Windows.Forms.Button buttonAnimals;
+
+	}
 }
 

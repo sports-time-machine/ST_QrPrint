@@ -2,8 +2,6 @@
 using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Printing;
-using System.IO;
-using System.Reflection;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
@@ -13,32 +11,31 @@ namespace ST_QrPrint
 	{
 		PlayerCode,
 		GameCode,
+		Animals,
 	}
 
-    public partial class FormQr : Form
-    {
+	public partial class FormQr : Form
+	{
+		/*=== 設定ここから ===*/
+		const string ID_FONT = "Consolas";
+
 		// A4: 210mm x 297mm
-		const float margin_h = 8.5f; //mm
-		const float margin_v = 9.0f; //mm
-		float cel_width  = 48.3f;
-		float cel_height = 25.4f;
-		float id_top_mm = 8.25f;
-		float id_left_mm = 22.5f;
-
-		// http://www.mimosa.gr.jp/oa_label/17_1882.html
-		// LDW44CEX
-		// left 8.5mm
-		// top 9.0mm
-		// 48.3 x 25.4
-
+		// エーワン Item Number 72244
+		const float margin_h   =  8.8f;   //紙と印刷部分上端のマージンmm
+		const float margin_v   =  8.4f;   //紙と印刷部分左端のマージンmm
+		const float cel_width  = 48.3f;   //シールのサイズ
+		const float cel_height = 25.4f;
+		const float id_top_mm  =  8.25f;  //シールに対する文字印刷部分のマージン
+		const float id_left_mm = 22.5f;
+		/*=== 設定ここまで ===*/
 
 		private DotNetBarcode barcode = new DotNetBarcode();
 		private Font font;
 		private static Random rand = new Random();
 
-        public FormQr()
-        {
-            InitializeComponent();
+		public FormQr()
+		{
+			InitializeComponent();
 			this.SetStyle(ControlStyles.SupportsTransparentBackColor, true);
 			this.BackColor = Color.Transparent;
 		}
@@ -60,51 +57,30 @@ namespace ST_QrPrint
 				obj.Size.Height - child.Size.Height);
 		}
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
+		private void Form1_Load(object sender, EventArgs e)
+		{
 			var okay = ST_QrPrint.Properties.Resources.dialog_ok_2;
 
-			apply(
-				pictureDatabase,
-				pictureDatabaseStatus,
-				okay);
-			apply(
-				picturePrinter,
-				picturePrinterStatus,
-				okay);
-
-
-
-
-            DotNetBarcode barcode = new DotNetBarcode();
-            barcode.Type = DotNetBarcode.Types.QRCode;
-
-			textBoxServerState.Text =
-				"良好";
-
-			PrintDocument pd = new PrintDocument();
-			var prn = pd.PrinterSettings.DefaultPageSettings;
-			textBoxPrinterState.Text =
-				pd.PrinterSettings.PrinterName+"\r\n"+
-				prn.PrinterResolution.X+"x"+prn.PrinterResolution.Y+"dpi\r\n"+
-				prn.PaperSize.Kind.ToString()+"\r\n";
+			DotNetBarcode barcode = new DotNetBarcode();
+			barcode.Type = DotNetBarcode.Types.QRCode;
 		}
 
-        private void FormQr_Paint(object sender, PaintEventArgs e)
-        {
-        }
+		private void pd_PrintPlayerCode(object sender, PrintPageEventArgs e)
+			{ pd_PrintPage(PrintType.PlayerCode, sender, e);　}
+		private void pd_PrintGameCode(object sender, PrintPageEventArgs e)
+			{ pd_PrintPage(PrintType.GameCode, sender, e);　}
+		private void pd_PrintAnimals(object sender, PrintPageEventArgs e)
+			{ pd_PrintPage(PrintType.Animals, sender, e); }
 
-        private void pd_PrintPlayerCode(object sender, PrintPageEventArgs e)
-        {
-			pd_PrintPage(PrintType.PlayerCode, sender, e);
-		}
+		private void buttonPrintGameCode_Click(object sender, EventArgs e)
+			{ PrintCommon(pd_PrintGameCode, sender, e); }
+		private void buttonPrint_Click(object sender, EventArgs e)
+			{ PrintCommon(pd_PrintPlayerCode, sender, e); }
+		private void buttonAnimals_Click(object sender, EventArgs e)
+			{ PrintCommon(pd_PrintAnimals, sender, e); }
 
 		delegate void PrintDelegate(object sender, PrintPageEventArgs e);
 
-        private void pd_PrintGameCode(object sender, PrintPageEventArgs e)
-        {
-			pd_PrintPage(PrintType.GameCode, sender, e);
-		}
 
 		static string GetShortId(string id)
 		{
@@ -123,19 +99,15 @@ namespace ST_QrPrint
 		}
 
 		private void pd_PrintPage(PrintType print_type, object sender, PrintPageEventArgs e)
-        {
-            Debug.Print("hello");
-            Debug.Print(e.MarginBounds.Right.ToString());
-            Debug.Print(e.MarginBounds.Bottom.ToString());
-            Debug.Print(e.MarginBounds.ToString());
-
+		{
 			const int W = 4;
 			const int H = 11;
 
+			string[] showname;
 			string[] ids;
 			try
 			{
-				ids = GetIdsFromDatabase(print_type, W*H);
+				ids = GetIdsFromDatabase(print_type, W*H, out showname);
 			}
 			catch (MySqlException ex)
 			{
@@ -143,26 +115,41 @@ namespace ST_QrPrint
 				return;
 			}
 
-            var g = e.Graphics;
+			var g = e.Graphics;
+			float font_pt = 20.0f;
+			const float to_inch = 1 / 0.254f;
+			string prefix = "";
+			switch (print_type)
+			{
+			case PrintType.PlayerCode:
+				prefix = "P";
+				font_pt = 24.0f;
+				break;
+			case PrintType.GameCode:
+				prefix = "G";
+				font_pt = 20.0f;
+				break;
+			case PrintType.Animals:
+				prefix = "";
+				font_pt = 16.0f;
+				break;
+			}
 
-			float font_pt = (print_type==PrintType.PlayerCode) ? 24.0f : 20.0f;
 			if (font!=null)
 			{
 				font.Dispose();
 			}
-			font = new Font("Courier New", font_pt, FontStyle.Bold);
+			font = new Font(ID_FONT, font_pt, FontStyle.Bold);
 
-
-			const float to_inch = 1 / 0.254f;
-			string prefix = (print_type==PrintType.PlayerCode) ? "P" : "G";
+			float text_top_mm = id_top_mm + (24.0f - font_pt)/4;
 
 			int i = 0;
-            for (int y=0; y<H; ++y)
-            {
-                for (int x=0; x<W; ++x, ++i)
-                {
+			for (int y=0; y<H; ++y)
+			{
+				for (int x=0; x<W; ++x, ++i)
+				{
 					string full_id = prefix + ids[i];
-					string short_id = GetShortId(ids[i]);
+					string show_id = (showname!=null) ? showname[i] : GetShortId(ids[i]);
 
 					const int qr_width = 3;
 					barcode.QRCopyToClipboard(full_id, qr_width);
@@ -170,13 +157,13 @@ namespace ST_QrPrint
 					Debug.Print(img.Width.ToString());
 					Debug.Print(img.Height.ToString());
 					int qr_size = img.Width;
-					int text_width = (int)g.MeasureString(short_id, font).Width;
+					int text_width = (int)g.MeasureString(show_id, font).Width;
 
 					float dx = x * cel_width  + margin_h;
 					float dy = y * cel_height + margin_v;
 
-                    g.DrawRectangle(
-                        //(x+y)%2==0 ? Pens.Red : Pens.Black,
+					g.DrawRectangle(
+						//(x+y)%2==0 ? Pens.Red : Pens.Black,
 						Pens.Black,
 						to_inch * dx,
 						to_inch * dy,
@@ -184,18 +171,18 @@ namespace ST_QrPrint
 						to_inch * cel_height);
 					//barcode.QRBackColorTimingPattern = Color.Red;
 					barcode.BackGroundColor = Color.Transparent;
-                    barcode.QRWriteBar(full_id,
-						   to_inch * (dx + 2),
-						   to_inch * (dy + 2),
-                           qr_width, e.Graphics);
-					g.DrawString(short_id, font, Brushes.Black,
-                           new PointF(
-							   to_inch * (dx + id_left_mm),
-							   to_inch * (dy + id_top_mm)));
-                }
-            }
-            e.HasMorePages = false;
-        }
+					barcode.QRWriteBar(full_id,
+							to_inch * (dx + 2),
+							to_inch * (dy + 2),
+							qr_width, e.Graphics);
+					g.DrawString(show_id, font, Brushes.Black,
+							new PointF(
+								to_inch * (dx + id_left_mm),
+								to_inch * (dy + text_top_mm)));
+				}
+			}
+			e.HasMorePages = false;
+		}
 
 		private void FormQr_Activated(object sender, EventArgs e)
 		{
@@ -261,17 +248,48 @@ namespace ST_QrPrint
 			}
 		}
 
-		string[] GetIdsFromDatabase(PrintType print_type, int count)
+		string[] GetIdsFromDatabase(PrintType print_type, int count, out string[] showname)
 		{
 			MySqlConnection conn = connect_to_db();
 
 			var ids = new System.Collections.ArrayList(count);
 			string all_ids = "";
 
-			string table_name =
-				(print_type==PrintType.GameCode)
-					? "records"
-					: "users";			
+			showname = null;
+			string table_name;
+			string col_name;
+			switch (print_type)
+			{
+			case PrintType.GameCode:
+				table_name = "records";
+				col_name   = "record_id";
+				break;
+			case PrintType.PlayerCode:
+				table_name = "users";
+				col_name   = "player_id";
+				break;
+			case PrintType.Animals:{
+				var list = new System.Collections.ArrayList();
+				var name = new System.Collections.ArrayList();
+				for (int i=0; i<count; ++i)
+				{
+					list.Add("M:CHEETAH-1");
+					name.Add("チーター");
+				}
+				showname = (string[])name.ToArray(typeof(string));
+				return (string[])list.ToArray(typeof(string));}
+			default:{
+				var list = new System.Collections.ArrayList();
+				var name = new System.Collections.ArrayList();
+				for (int i=0; i<count; ++i)
+				{
+					list.Add("#NO-ID#");
+					name.Add("無効なID");
+				}
+				showname = (string[])name.ToArray(typeof(string));
+				return (string[])list.ToArray(typeof(string));}
+			}
+		
 			for (int i=0; i<count; ++i)
 			{
 				for (int tries=0; tries<10; ++tries)
@@ -281,7 +299,7 @@ namespace ST_QrPrint
 
 					string query =
 						"INSERT INTO "+table_name+" "+
-						"(player_id,created) values "+
+						"(" + col_name + ",created) values " +
 						"('"+user_id+"','"+date.ToString("yyyy-MM-dd HH:mm:ss")+"')";
 					var command =new MySqlCommand(query, conn);
 					try
@@ -311,7 +329,7 @@ namespace ST_QrPrint
 				}
 			}
 
-			var retval = (string[])ids.ToArray(typeof(string));		
+			var retval = (string[])ids.ToArray(typeof(string));
 			textBoxSqlStatus.Text = all_ids;
 			return retval;
 		}
@@ -324,7 +342,8 @@ namespace ST_QrPrint
 			string[] ids;
 			try
 			{
-				ids = GetIdsFromDatabase(PrintType.PlayerCode, 30);
+				string[] temp;
+				ids = GetIdsFromDatabase(PrintType.PlayerCode, 30, out temp);
 			}
 			catch (MySqlException ex)
 			{
@@ -350,41 +369,6 @@ namespace ST_QrPrint
 #endif
 		}
 
-		private void buttonRemoveUnusedIds_Click(object sender, EventArgs e)
-		{			
-			MySqlConnection conn;
-			textBoxSqlStatus.Text = "Connecting...";
-
-			try
-			{
-				conn = connect_to_db();
-			}
-			catch (MySqlException ex)
-			{
-				textBoxSqlStatus.Text = ex.Message;
-				return;
-			}
-
-			{
-				string query =
-					"DELETE FROM users "+
-					"WHERE is_synced=0";
-				var command = new MySqlCommand(query, conn);
-				try
-				{
-					int resval = command.ExecuteNonQuery();
-					textBoxSqlStatus.Text = resval.ToString()+"コの未使用IDを削除しました。";
-				}
-				catch (MySqlException ex)
-				{
-					textBoxSqlStatus.Text = ex.ToString();
-				}
-			}
-
-			conn.Close();
-			conn.Dispose();
-		}
-
 		private void FormQr_FormClosing(object sender, FormClosingEventArgs e)
 		{
 			if (conn_keep_alive!=null && conn_keep_alive.State==System.Data.ConnectionState.Open)
@@ -392,21 +376,6 @@ namespace ST_QrPrint
 				conn_keep_alive.Close();
 				conn_keep_alive.Dispose();
 			}
-		}
-
-		private void buttonExit_Click_1(object sender, EventArgs e)
-		{
-			Application.Exit();
-		}
-
-		private void buttonPrintGameCode_Click(object sender, EventArgs e)
-		{
-			PrintCommon(pd_PrintGameCode, sender, e);
-		}
-
-		private void buttonPrint_Click(object sender, EventArgs e)
-		{
-			PrintCommon(pd_PrintPlayerCode, sender, e);
 		}
 
 		private void PrintCommon(PrintDelegate print, object sender, EventArgs e)
