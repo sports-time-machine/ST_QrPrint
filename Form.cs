@@ -162,6 +162,7 @@ namespace ST_QrPrint
 					float dx = x * cel_width  + margin_h;
 					float dy = y * cel_height + margin_v;
 
+#if false
 					g.DrawRectangle(
 						//(x+y)%2==0 ? Pens.Red : Pens.Black,
 						Pens.Black,
@@ -169,6 +170,7 @@ namespace ST_QrPrint
 						to_inch * dy,
 						to_inch * cel_width ,
 						to_inch * cel_height);
+#endif
 					//barcode.QRBackColorTimingPattern = Color.Red;
 					barcode.BackGroundColor = Color.Transparent;
 					barcode.QRWriteBar(full_id,
@@ -219,10 +221,15 @@ namespace ST_QrPrint
 
 		static char GetRandomChar(bool include_zero)
 		{
-			const string all = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+			// O/ou/を除く35文字セットから出す
+			const string all =
+				"0123456789"+
+				"ABCDEFGHIJ"+
+				"KLMNPQRSTU"+
+				"VWXYZ";
 			return include_zero
-				? all[rand.Next()%36]
-				: all[rand.Next()%35+1];
+				? all[rand.Next()%35]
+				: all[rand.Next()%34+1];
 		}
 		
 		static string GetRandomId(PrintType print_type)
