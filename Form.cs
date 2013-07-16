@@ -257,8 +257,6 @@ namespace ST_QrPrint
 
 		string[] GetIdsFromDatabase(PrintType print_type, int count, out string[] showname)
 		{
-			MySqlConnection conn = connect_to_db();
-
 			var ids = new System.Collections.ArrayList(count);
 			string all_ids = "";
 
@@ -296,7 +294,8 @@ namespace ST_QrPrint
 				showname = (string[])name.ToArray(typeof(string));
 				return (string[])list.ToArray(typeof(string));}
 			}
-		
+
+			MySqlConnection conn = connect_to_db();
 			for (int i=0; i<count; ++i)
 			{
 				for (int tries=0; tries<10; ++tries)
