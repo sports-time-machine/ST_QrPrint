@@ -388,17 +388,7 @@ namespace ST_QrPrint
 		{
 			var pd = new PrintDocument();
 			pd.PrintPage += new PrintPageEventHandler(print);
-
-			if (checkPrintWithoutPreview.Checked)
-			{
-				pd.Print();
-			}
-			else
-			{
-				var ppd = new PrintPreviewDialog();
-				ppd.Document = pd;
-				ppd.ShowDialog();
-			}
+			pd.Print();
 		}
 	}
 }

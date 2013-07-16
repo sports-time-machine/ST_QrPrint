@@ -40,7 +40,6 @@ namespace ST_QrPrint
 			this.label1 = new System.Windows.Forms.Label();
 			this.buttonPrintGameCode = new System.Windows.Forms.Button();
 			this.buttonExit = new System.Windows.Forms.Button();
-			this.checkPrintWithoutPreview = new System.Windows.Forms.CheckBox();
 			this.buttonPrint = new System.Windows.Forms.Button();
 			this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
 			this.label2 = new System.Windows.Forms.Label();
@@ -97,7 +96,6 @@ namespace ST_QrPrint
 			this.tabPage1.Controls.Add(this.label1);
 			this.tabPage1.Controls.Add(this.buttonPrintGameCode);
 			this.tabPage1.Controls.Add(this.buttonExit);
-			this.tabPage1.Controls.Add(this.checkPrintWithoutPreview);
 			this.tabPage1.Controls.Add(this.buttonPrint);
 			this.tabPage1.Controls.Add(this.numericUpDown1);
 			this.tabPage1.Controls.Add(this.label2);
@@ -153,17 +151,6 @@ namespace ST_QrPrint
 			this.buttonExit.TabIndex = 19;
 			this.buttonExit.UseVisualStyleBackColor = true;
 			this.buttonExit.Click += new System.EventHandler(this.buttonExit_Click);
-			// 
-			// checkPrintWithoutPreview
-			// 
-			this.checkPrintWithoutPreview.AutoSize = true;
-			this.checkPrintWithoutPreview.Location = new System.Drawing.Point(494, 383);
-			this.checkPrintWithoutPreview.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-			this.checkPrintWithoutPreview.Name = "checkPrintWithoutPreview";
-			this.checkPrintWithoutPreview.Size = new System.Drawing.Size(160, 24);
-			this.checkPrintWithoutPreview.TabIndex = 18;
-			this.checkPrintWithoutPreview.Text = "プレビューせずに印刷";
-			this.checkPrintWithoutPreview.UseVisualStyleBackColor = true;
 			// 
 			// buttonPrint
 			// 
@@ -303,7 +290,6 @@ namespace ST_QrPrint
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.Button buttonPrintGameCode;
 		private System.Windows.Forms.Button buttonExit;
-		private System.Windows.Forms.CheckBox checkPrintWithoutPreview;
 		private System.Windows.Forms.Button buttonPrint;
 		private System.Windows.Forms.NumericUpDown numericUpDown1;
 		private System.Windows.Forms.Label label2;
