@@ -278,8 +278,8 @@ namespace ST_QrPrint
 				var name = new System.Collections.ArrayList();
 				for (int i=0; i<count; ++i)
 				{
-					list.Add("M:CHEETAH-1");
-					name.Add("チーター");
+					list.Add(textBoxAnimalId.Text);
+					name.Add(textBoxAnimalName.Text);
 				}
 				showname = (string[])name.ToArray(typeof(string));
 				return (string[])list.ToArray(typeof(string));}
@@ -390,5 +390,16 @@ namespace ST_QrPrint
 			pd.PrintPage += new PrintPageEventHandler(print);
 			pd.Print();
 		}
+
+		void SetAnimal(string name, string id)
+		{
+			textBoxAnimalId.Text = id;
+			textBoxAnimalName.Text = name;
+		}
+
+		private void buttonCheetah1_Click(object sender, EventArgs e)
+			{ SetAnimal("チーター","M:CHEETAH-1"); }
+		private void buttonElephant1_Click(object sender, EventArgs e)
+			{ SetAnimal("象","M:ELEPHANT-1"); }
 	}
 }

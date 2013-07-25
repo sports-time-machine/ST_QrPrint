@@ -45,7 +45,14 @@ namespace ST_QrPrint
 			this.label2 = new System.Windows.Forms.Label();
 			this.tabControl1 = new System.Windows.Forms.TabControl();
 			this.tabPage2 = new System.Windows.Forms.TabPage();
+			this.label7 = new System.Windows.Forms.Label();
+			this.label6 = new System.Windows.Forms.Label();
+			this.textBoxAnimalName = new System.Windows.Forms.TextBox();
+			this.label5 = new System.Windows.Forms.Label();
 			this.label4 = new System.Windows.Forms.Label();
+			this.buttonElephant1 = new System.Windows.Forms.Button();
+			this.buttonCheetah1 = new System.Windows.Forms.Button();
+			this.textBoxAnimalId = new System.Windows.Forms.TextBox();
 			this.buttonAnimals = new System.Windows.Forms.Button();
 			this.tabPage4.SuspendLayout();
 			this.tabPage1.SuspendLayout();
@@ -217,7 +224,14 @@ namespace ST_QrPrint
 			// 
 			// tabPage2
 			// 
+			this.tabPage2.Controls.Add(this.label7);
+			this.tabPage2.Controls.Add(this.label6);
+			this.tabPage2.Controls.Add(this.textBoxAnimalName);
+			this.tabPage2.Controls.Add(this.label5);
 			this.tabPage2.Controls.Add(this.label4);
+			this.tabPage2.Controls.Add(this.buttonElephant1);
+			this.tabPage2.Controls.Add(this.buttonCheetah1);
+			this.tabPage2.Controls.Add(this.textBoxAnimalId);
 			this.tabPage2.Controls.Add(this.buttonAnimals);
 			this.tabPage2.Location = new System.Drawing.Point(4, 29);
 			this.tabPage2.Name = "tabPage2";
@@ -227,14 +241,77 @@ namespace ST_QrPrint
 			this.tabPage2.Text = "特殊なQRコード";
 			this.tabPage2.UseVisualStyleBackColor = true;
 			// 
+			// label7
+			// 
+			this.label7.AutoSize = true;
+			this.label7.Location = new System.Drawing.Point(170, 118);
+			this.label7.Name = "label7";
+			this.label7.Size = new System.Drawing.Size(41, 20);
+			this.label7.TabIndex = 36;
+			this.label7.Text = "名前";
+			// 
+			// label6
+			// 
+			this.label6.AutoSize = true;
+			this.label6.Location = new System.Drawing.Point(179, 62);
+			this.label6.Name = "label6";
+			this.label6.Size = new System.Drawing.Size(32, 20);
+			this.label6.TabIndex = 35;
+			this.label6.Text = "QR";
+			// 
+			// textBoxAnimalName
+			// 
+			this.textBoxAnimalName.Font = new System.Drawing.Font("Courier New", 24F);
+			this.textBoxAnimalName.Location = new System.Drawing.Point(217, 103);
+			this.textBoxAnimalName.Name = "textBoxAnimalName";
+			this.textBoxAnimalName.Size = new System.Drawing.Size(411, 44);
+			this.textBoxAnimalName.TabIndex = 34;
+			// 
+			// label5
+			// 
+			this.label5.AutoSize = true;
+			this.label5.Location = new System.Drawing.Point(231, 166);
+			this.label5.Name = "label5";
+			this.label5.Size = new System.Drawing.Size(205, 20);
+			this.label5.TabIndex = 33;
+			this.label5.Text = "上記に直接記入してもOKです";
+			// 
 			// label4
 			// 
 			this.label4.AutoSize = true;
-			this.label4.Location = new System.Drawing.Point(170, 80);
+			this.label4.Location = new System.Drawing.Point(64, 247);
 			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(59, 20);
-			this.label4.TabIndex = 26;
-			this.label4.Text = "チーター";
+			this.label4.Size = new System.Drawing.Size(134, 20);
+			this.label4.TabIndex = 32;
+			this.label4.Text = "IDをセットするボタン";
+			// 
+			// buttonElephant1
+			// 
+			this.buttonElephant1.Location = new System.Drawing.Point(46, 331);
+			this.buttonElephant1.Name = "buttonElephant1";
+			this.buttonElephant1.Size = new System.Drawing.Size(167, 55);
+			this.buttonElephant1.TabIndex = 31;
+			this.buttonElephant1.Text = "M:ELEPHANT-1";
+			this.buttonElephant1.UseVisualStyleBackColor = true;
+			this.buttonElephant1.Click += new System.EventHandler(this.buttonElephant1_Click);
+			// 
+			// buttonCheetah1
+			// 
+			this.buttonCheetah1.Location = new System.Drawing.Point(46, 270);
+			this.buttonCheetah1.Name = "buttonCheetah1";
+			this.buttonCheetah1.Size = new System.Drawing.Size(167, 55);
+			this.buttonCheetah1.TabIndex = 30;
+			this.buttonCheetah1.Text = "M:CHEETAH-1";
+			this.buttonCheetah1.UseVisualStyleBackColor = true;
+			this.buttonCheetah1.Click += new System.EventHandler(this.buttonCheetah1_Click);
+			// 
+			// textBoxAnimalId
+			// 
+			this.textBoxAnimalId.Font = new System.Drawing.Font("Courier New", 24F);
+			this.textBoxAnimalId.Location = new System.Drawing.Point(217, 47);
+			this.textBoxAnimalId.Name = "textBoxAnimalId";
+			this.textBoxAnimalId.Size = new System.Drawing.Size(411, 44);
+			this.textBoxAnimalId.TabIndex = 29;
 			// 
 			// buttonAnimals
 			// 
@@ -295,8 +372,15 @@ namespace ST_QrPrint
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.TabControl tabControl1;
 		private System.Windows.Forms.TabPage tabPage2;
-		private System.Windows.Forms.Label label4;
 		private System.Windows.Forms.Button buttonAnimals;
+		private System.Windows.Forms.Button buttonElephant1;
+		private System.Windows.Forms.Button buttonCheetah1;
+		private System.Windows.Forms.TextBox textBoxAnimalId;
+		private System.Windows.Forms.Label label5;
+		private System.Windows.Forms.Label label4;
+		private System.Windows.Forms.Label label6;
+		private System.Windows.Forms.TextBox textBoxAnimalName;
+		private System.Windows.Forms.Label label7;
 
 	}
 }
